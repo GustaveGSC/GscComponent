@@ -11,14 +11,12 @@ class GPageWidget(QWidget):
     def __init__(self, parent: Optional[QWidget] = None, geometry: Optional[Tuple[int, int, int, int]] = None,
                  is_center: bool = True, is_max: bool = True, bd_color: Optional[str] = None,
                  icon_path: Optional[str] = None, title: Optional[str] = None, is_resize: bool = False) -> None:
-        super().__init__()
-
-        self.gWidth: int = 800
-        self.gHeight: int = 600
-        self.gLT_x: int = 0
-        self.gLT_y: int = 0
+        super().__init__(parent)
 
         self.parent = parent
+
+        # 初始化几何参数
+        self.gWidth, self.gHeight, self.gLT_x, self.gLT_y = geometry or (800, 600, 0, 0)
 
         self.set_geometry(geometry, is_center, is_max)      # 设置窗口几何
         self.set_icon(icon_path)    # 设置图标
